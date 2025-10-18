@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Navbar Example</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+  margin: 0;
+  /* Dark Blue Background */
+  height: 100vh;
+  position: relative;
+  color: white;
+}
+
+.custom-navbar {
+  background-color: #0a1b52; /* Match background */
+  border-bottom: 1px solid #ccc;
+  padding: 10px 20px;
+}
+
+.nav-link {
+  font-weight: bold;
+  margin-right: 20px;
+  color: white !important;
+}
+
+.special-link {
+  color: #87b4ff !important; /* Slightly lighter blue for "SCHOOLS" */
+}
+
+.btn-warning {
+  background-color: #f58025;
+  border: none;
+}
+
+.exit-button {
+  position: absolute;
+  
+  right: 30px;
+}
+/* Set body and container to full screen */
+
+
+.image-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #cce0ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullscreen-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Arrows */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  z-index: 1000;
+  padding: 10px;
+}
+
+.carousel-arrow.left {
+  left: 20px;
+}
+
+.carousel-arrow.right {
+  right: 20px;
+}
+
+/* Optional: Bigger arrow icons */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 40px;
+  height: 40px;
+  background-size: 100% 100%;
+}
+.footer {
+      background-color: #18325d;
+      color: white;
+      padding: 40px 0;
+    }
+
+    .footer h6 {
+      font-weight: bold;
+      color: #6c9cff;
+      margin-bottom: 15px;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.5rem;
+      margin-right: 15px;
+      display: inline-block;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #7a94c4;
+      padding-top: 20px;
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom a {
+      margin: 0 10px;
+      color: #d5dce5;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+{% load static %}
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
+    <div class="container-fluid">
+      <!-- Logo -->
+      <a class="navbar-brand" href="#">
+        <img src="{% static 'logo.png' %}" alt="Logo" width="40" height="40"> <!-- Replace with your logo -->
+      </a>
+
+      <!-- Nav Links -->
+      <div class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link active" href="{% url 'index' %}">HOME</a></li>
+          <li class="nav-item"><a class="nav-link special-link" href="{% url 'schools' %}">SCHOOLS</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'library' %}">LIBRARY</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'pricing' %}">PRICING</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'about' %}">ABOUT</a></li>
+        </ul>
+        <button class="btn btn-warning ms-3 text-white fw-bold">LOGIN</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Exit Button (bottom right) -->
+  <div class="exit-button">
+    <button class="btn btn-warning text-white fw-bold">EXIT</button>
+  </div>
+<div class="image-container">
+    <!-- Left Arrow -->
+    <button class="carousel-arrow left" onclick="prevImage()">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+
+    <!-- Fullscreen Image -->
+    <img id="carousel-image" src="{% static '1lib.jpg' %}" alt="Book Page" class="fullscreen-image">
+
+    <!-- Right Arrow -->
+    <button class="carousel-arrow right" onclick="nextImage()">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Add behavior for login or exit buttons if needed
+document.querySelector('.exit-button button').addEventListener('click', () => {
+  alert("Exit clicked");
+});
+  </script>
+  <script>
+    const images = ["{% static '2lib.jpg' %}", "{% static '3lib.jpg' %}", "{% static '4lib.jpg' %}", "{% static '5lib.jpg' %}"];    
+let currentIndex = 0;
+
+function showImage(index) {
+  const img = document.getElementById("carousel-image");
+  img.src = images[index];
+}
+
+function nextImage() {
+  currentIndex = (currentIndex + 1) % images.length;
+  showImage(currentIndex);
+}
+
+function prevImage() {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  showImage(currentIndex);
+}
+
+  </script>
+  <!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+
+      <!-- Kids Reading -->
+      <div class="col-md-4">
+        <h6>Kids Reading</h6>
+        <a href="{% url 'about' %}">About us</a>
+        <a href="{% url 'library' %}">Library</a>
+        <a href="{% url 'pricing' %}">Pricing</a>
+        <a href="#">Blog</a>
+      </div>
+
+      <!-- Help -->
+      <div class="col-md-4">
+        <h6>Help</h6>
+        <a href="#">Support & FAQ</a>
+        <a href="#">Terms of service</a>
+        <a href="#">Privacy</a>
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-4">
+        <h6>Social Media</h6>
+        <div class="social-icons">
+          <img src="{% static 'soc.jpg' %}">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+<div class="row mt-4 footer-bottom">
+  <div class="col d-flex justify-content-center flex-wrap">
+    <a href="#" class="mx-2">Copyright</a>
+    <a href="#" class="mx-2">Terms of service</a>
+    <a href="#" class="mx-2">Privacy</a>
+    <a href="#" class="mx-2">Blog</a>
+    <a href="#" class="mx-2">Patent</a>
+  </div>
+</div>
+
+    </div>
+  </div>
+</footer>
+ <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

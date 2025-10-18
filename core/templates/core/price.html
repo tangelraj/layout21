@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    
+.custom-navbar {
+  background-color: #0b1b4b;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+}
+
+.nav-link {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #a6c8ff; /* light blue hover */
+}
+
+.login-btn {
+  background-color: #ff914d;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 6px 16px;
+  text-transform: uppercase;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #ffab0d;
+  color: #fff;
+}
+h2 {
+      text-align: center;
+      font-weight: 700;
+      color: #0b1e4b;
+      margin-bottom: 5px;
+    }
+
+    p.subtitle {
+      text-align: center;
+      color: #555;
+      margin-bottom: 50px;
+    }
+
+    .pricing-table {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .plan-card {
+      background-color: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 16px;
+    }
+
+    .feature-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .feature-list li:last-child {
+      border-bottom: none;
+    }
+
+    .feature-name {
+      flex: 1;
+      color: #333;
+    }
+
+    .feature-note {
+      font-size: 13px;
+      color: #888;
+      display: block;
+    }
+
+    .icon {
+      font-size: 22px;
+      margin-left: 20px;
+    }
+
+    .icon.check {
+      color: #1dbf73;
+    }
+
+    .icon.cross {
+      color: #dc3545;
+    }
+
+    .limited {
+      color: #0b1e4b;
+      font-weight: 600;
+    }
+
+    .price {
+      font-weight: 600;
+      margin-top: 20px;
+    }
+
+    .btn-plan {
+      border-radius: 8px;
+      padding: 10px 25px;
+      font-weight: 600;
+      font-size: 15px;
+      margin-top: 10px;
+    }
+
+    .btn-free {
+      border: 2px solid #0b1e4b;
+      color: #0b1e4b;
+      background: transparent;
+    }
+
+    .btn-free:hover {
+      background: #0b1e4b;
+      color: white;
+    }
+
+    .btn-gold {
+      background: #e88a3d;
+      color: white;
+      border: none;
+    }
+
+    .btn-gold:hover {
+      background: #cf7327;
+    }
+
+    @media (max-width: 767px) {
+      .feature-list li {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .icon {
+        margin-left: 0;
+      }
+    }
+     h2 {
+      font-weight: 700;
+      margin-bottom: 40px;
+    }
+
+    .perk-icon {
+      background-color: #0d2a52;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .perk-icon img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+    }
+
+    .perk {
+      padding: 20px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .perk:hover {
+      transform: translateY(-5px);
+    }
+
+    .perk-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .perk-desc {
+      font-size: 0.95rem;
+      color: #d0d0d0;
+    }
+
+    .btn-custom {
+      background-color: #ff8b2c;
+      color: #fff;
+      border: none;
+      padding: 12px 35px;
+      border-radius: 8px;
+      font-weight: 600;
+      margin-top: 40px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background-color: #e67a1f;
+    }
+    .faq-section {
+      padding: 80px 20px;
+    }
+
+    .faq-title {
+      text-align: center;
+      font-weight: 700;
+      color: #0d2a52;
+      margin-bottom: 50px;
+    }
+
+    .accordion-item {
+      border: none;
+      background-color: transparent;
+      margin-bottom: 10px;
+    }
+
+    .accordion-button {
+      background-color: #fff;
+      color: #0d2a52;
+      font-weight: 600;
+      border-radius: 5px !important;
+      padding: 18px 20px;
+      box-shadow: none;
+    }
+
+    .accordion-button::after {
+      display: none;
+    }
+
+    .accordion-button .icon-circle {
+      background-color: #f78b2d; /* Orange circle */
+      color: #fff;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .accordion-button:not(.collapsed) .icon-circle {
+      transform: rotate(45deg); /* Turns + into x */
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-button.collapsed .icon-circle {
+      transform: rotate(0deg);
+      transition: transform 0.3s ease;
+    }
+
+    .accordion-body {
+      background-color: #fff;
+      color: #333;
+      border-top: 1px solid #eee;
+      padding: 20px 40px;
+    }
+    .footer {
+      background-color: #18325d;
+      color: white;
+      padding: 40px 0;
+    }
+
+    .footer h6 {
+      font-weight: bold;
+      color: #6c9cff;
+      margin-bottom: 15px;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.5rem;
+      margin-right: 15px;
+      display: inline-block;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #7a94c4;
+      padding-top: 20px;
+      font-size: 0.9rem;
+    }
+
+    .footer-bottom a {
+      margin: 0 10px;
+      color: #d5dce5;
+    }
+
+    .footer-bottom a:hover {
+      text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+  {% load static %}
+    <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="{% static 'logo.jpg' %}" alt="logo" class="logo">
+      </a>
+
+      <!-- Navbar Toggler -->
+      <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menu Items -->
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="nav-link active" href="{% url 'index' %}">HOME</a></li>
+          <li class="nav-item"><a class="nav-link special-link" href="{% url 'schools' %}">SCHOOLS</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'library' %}">LIBRARY</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'pricing' %}">PRICING</a></li>
+          <li class="nav-item"><a class="nav-link active" href="{% url 'about' %}">ABOUT</a></li>
+          <li class="nav-item ms-3">
+            <a href="#" class="btn login-btn">LOGIN</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav> 
+  <div class="container bg-white">
+    <h2>Enjoy (way) more with KidsReading Gold</h2>
+    <p class="subtitle">Take advantage of our Gold Family Plan option to experience all the benefits KidsReading has to offer.</p>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="row align-items-start">
+          
+          <!-- Features Column -->
+          <div class="col-md-5">
+            <ul class="feature-list">
+              <li>
+                <div class="feature-name">
+                  BookChat with the ones you love
+                </div>
+              </li>
+              <li>
+                <div class="feature-name">
+                  Full Library access
+                  <span class="feature-note">(over 1,000 books and counting!)</span>
+                </div>
+              </li>
+              <li>
+                <div class="feature-name">
+                  Create customized bookshelves
+                  <i class="bi bi-info-circle ms-1"></i>
+                </div>
+              </li>
+              <li>
+                <div class="feature-name">
+                  Bookmarks
+                  <i class="bi bi-info-circle ms-1"></i>
+                </div>
+              </li>
+              <li>
+                <div class="feature-name">
+                  Share Gold with 4 others
+                  <span class="feature-note">(They'll have full Gold plan benefits)</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Free Plan -->
+          <div class="col-md-3 text-center">
+            <div class="plan-card">
+              <h5>Free Plan</h5>
+              <div class="mt-3">
+                <div class="icon check">✔️</div>
+                <div class="limited mt-2">Limited❓<br><small>(5 books rotate monthly)</small></div>
+                <div class="icon cross mt-3">❌</div>
+                <div class="icon cross mt-3">❌</div>
+                <div class="icon cross mt-3">❌</div>
+              </div>
+              <div class="price mt-3">FREE<br><small>Forever</small></div>
+              <a href="lib.html"><button class="btn btn-free btn-plan mt-3">STAY FREE</button></a>
+            </div>
+          </div>
+
+          <!-- Gold Plan -->
+          <div class="col-md-3 text-center">
+            <div class="plan-card">
+              <h5>Gold Family Plan</h5>
+              <div class="mt-3">
+                <div class="icon check">✔️</div>
+                <div class="icon check mt-3">✔️</div>
+                <div class="icon check mt-3">✔️</div>
+                <div class="icon check mt-3">✔️</div>
+                <div class="icon check mt-3">✔️</div>
+              </div>
+              <div class="price mt-3">
+                $14.99/monthly<br>
+                <strong>$99.99/annually</strong>
+              </div>
+              <button class="btn btn-gold btn-plan mt-3">FAMILY GOLD</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+ <div class="container">
+    <h2>Gold Plan Perks</h2>
+
+    <div class="row justify-content-center text-center">
+      <div class="col-md-4 perk">
+        <div class="perk-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png" alt="Bookshelf">
+        </div>
+        <div class="perk-title">Create customized bookshelves</div>
+        <div class="perk-desc">
+          Keep your books organized and on display, using as many shelves as you like. 
+          Anyone on your Gold Family Plan can access them, too!
+        </div>
+      </div>
+
+      <div class="col-md-4 perk">
+        <div class="perk-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/2991/2991108.png" alt="Bookmark">
+        </div>
+        <div class="perk-title">Save your spot</div>
+        <div class="perk-desc">
+          When bedtime cuts your BookChat short, bookmark that spot and jump back in later.
+        </div>
+      </div>
+
+      <div class="col-md-4 perk">
+        <div class="perk-icon">
+          <img src="https://cdn-icons-png.flaticon.com/512/747/747545.png" alt="Family">
+        </div>
+        <div class="perk-title">Share Gold with Family</div>
+        <div class="perk-desc">
+          Add up to 4 people on your Gold Family Plan. They’ll have the same full access to Readeo as you.
+        </div>
+      </div>
+    </div>
+
+    <button class="btn btn-custom mt-4">GET STARTED FOR FREE</button>
+  </div>
+ <section class="faq-section bg-blue">
+    <div class="container">
+      <h2 class="faq-title">Frequently asked questions</h2>
+
+      <div class="accordion" id="faqAccordion">
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+              <span class="icon-circle">+</span> What are the benefits of upgrading to a Gold Membership?
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Upgrading to Gold unlocks exclusive features, family sharing, and unlimited reading options.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+              <span class="icon-circle">+</span> What is the difference between a Gold Plan and a Gold Family Plan?
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              The Gold Family Plan allows up to four family members to share the same Gold benefits.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+              <span class="icon-circle">+</span> How do I add/remove members to my Gold Family Plan?
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              You can manage family members directly in your account settings under the Family Plan section.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+              <span class="icon-circle">+</span> Can a Free Member BookChat with a Gold Member?
+            </button>
+          </h2>
+          <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Yes, Free Members can join BookChats initiated by Gold Members.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+              <span class="icon-circle">+</span> Is there any sort of time limit or book restraint for reading sessions?
+            </button>
+          </h2>
+          <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Gold Members enjoy unlimited reading sessions without restrictions.
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingSix">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix">
+              <span class="icon-circle">+</span> Is a credit card required at signup if I’m signing up for a Free Membership?
+            </button>
+          </h2>
+          <div id="collapseSix" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              No, you can sign up for a Free Membership without a credit card.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+ <!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+
+      <!-- Kids Reading -->
+      <div class="col-md-4">
+        <h6>Kids Reading</h6>
+        <a href="{% url 'about' %}">About us</a>
+        <a href="{% url 'library' %}">Library</a>
+        <a href="{% url 'pricing' %}">Pricing</a>
+        <a href="#">Blog</a>
+      </div>
+
+      <!-- Help -->
+      <div class="col-md-4">
+        <h6>Help</h6>
+        <a href="#">Support & FAQ</a>
+        <a href="#">Terms of service</a>
+        <a href="#">Privacy</a>
+      </div>
+
+      <!-- Social Media -->
+      <div class="col-md-4">
+        <h6>Social Media</h6>
+        <div class="social-icons">
+          <img src="{% static 'soc.jpg' %}">
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+<div class="row mt-4 footer-bottom">
+  <div class="col d-flex justify-content-center flex-wrap">
+    <a href="#" class="mx-2">Copyright</a>
+    <a href="#" class="mx-2">Terms of service</a>
+    <a href="#" class="mx-2">Privacy</a>
+    <a href="#" class="mx-2">Blog</a>
+    <a href="#" class="mx-2">Patent</a>
+  </div>
+</div>
+
+    </div>
+  </div>
+</footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+</body>
+</html>
